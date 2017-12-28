@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+	<div class="row">
+	  <div class="col-md-12">
+		<div class="jumbotron">
+			<h1>상세 페이지</h1>
+			<p>${bean.name }님의 상세 정보입니다</p>
+		</div>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="col-md-12">
+	  	<div class="page-header">
+		  <h2>${bean.name } <small>사번 ${bean.sabun }님의 정보</small></h2>
+		  <p>nalja : ${bean.nalja }</p>
+		  <p>pay : ${bean.pay }</p>
+		  <p>
+			<div class="btn-group btn-group-justified" role="group" aria-label="...">
+		  	<a role="button" class="btn btn-primary" href="./edit?idx=${bean.sabun }">수정</a>
+		  	<a role="button" class="btn btn-danger" href="./delete?idx=${bean.sabun }">삭제</a>
+			</div>
+		  </p>
+		</div>
+	  </div>
+	 </div>
+	</div>
+</body>
+</html>
