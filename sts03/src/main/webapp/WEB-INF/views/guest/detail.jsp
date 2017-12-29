@@ -12,11 +12,11 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="../resources/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<!-- 상단 배너 메뉴 -->
@@ -33,13 +33,13 @@
 	    </div>
 				  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav">
-			        <li><a href="/ex03/">HOME <span class="sr-only">(current)</span></a></li>
+			        <li><a href="../">HOME <span class="sr-only">(current)</span></a></li>
 			        <li class="dropdown active">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">GUEST <span class="caret"></span></a>
 			          <ul class="dropdown-menu">
-			            <li><a href="/ex03/guest">글목록</a></li>
+			            <li><a href="../guest">글목록</a></li>
 			            <li role="separator" class="divider"></li>
-			            <li><a href="/ex03/guest/add">글작성</a></li>
+			            <li><a href="../guest/add">글작성</a></li>
 			          </ul>
 			        </li>
 			      </ul>
@@ -51,25 +51,30 @@
 		<div class="row content">
 		  <div class="col-md-12">
 		  	<div class="jumbotron">
-			  <h1>리스트 페이지</h1>
-			  <p>guest03 테이블의 내용</p>
+			  <h1>상세 페이지</h1>
+			  <p>${bean.sabun } 님의 데이터</p>
 			  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 			</div>
-			<div class="panel panel-default">
-			  <!-- Default panel contents -->
-			  <div class="panel-heading">
-				  	목록
-			  </div>
-			<div class="list-group">
-			  <c:forEach items="${list }" var="bean">
-			  <a href="./guest/${bean.sabun }" class="list-group-item">
-				  	<span class="badge">${bean.pay }</span>
-				    <h4>${bean.sabun }</h4>
-				    <p>${bean.name } (${bean.nalja })</p>
-			  </a>
-			  </c:forEach>
-			</div>
-			</div>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-12">
+			<p class="bg-info">
+				<span>사번</span><span>${bean.sabun }</span>
+			</p>
+			<p class="bg-info">
+				<span>이름</span><span>${bean.name }</span>
+			</p>
+			<p class="bg-info">
+				<span>날짜</span><span>${bean.nalja }</span>
+			</p>
+			<p class="bg-info">
+				<span>금액</span><span>${bean.pay }</span>
+			</p>
+			<p>
+				<a href="/ex03/guest/${bean.sabun }/edit">수정</a>
+				<a href="/ex03/guest/${bean.sabun }/delete">삭제</a>
+			</p>
 		  </div>
 		</div>
 		<div class="row footer">

@@ -12,11 +12,11 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/ex03/resources/css/bootstrap.min.css" rel="stylesheet">
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="/ex03/resources/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<!-- 상단 배너 메뉴 -->
@@ -33,13 +33,13 @@
 	    </div>
 				  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav">
-			        <li><a href="/ex03/">HOME <span class="sr-only">(current)</span></a></li>
+			        <li><a href="../">HOME <span class="sr-only">(current)</span></a></li>
 			        <li class="dropdown active">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">GUEST <span class="caret"></span></a>
 			          <ul class="dropdown-menu">
-			            <li><a href="/ex03/guest">글목록</a></li>
+			            <li><a href="../guest">글목록</a></li>
 			            <li role="separator" class="divider"></li>
-			            <li><a href="/ex03/guest/add">글작성</a></li>
+			            <li><a href="../guest/add">글작성</a></li>
 			          </ul>
 			        </li>
 			      </ul>
@@ -51,25 +51,38 @@
 		<div class="row content">
 		  <div class="col-md-12">
 		  	<div class="jumbotron">
-			  <h1>리스트 페이지</h1>
-			  <p>guest03 테이블의 내용</p>
+			  <h1>수정 페이지</h1>
+			  <p>${bean.sabun } 님의 내용 수정</p>
 			  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 			</div>
-			<div class="panel panel-default">
-			  <!-- Default panel contents -->
-			  <div class="panel-heading">
-				  	목록
-			  </div>
-			<div class="list-group">
-			  <c:forEach items="${list }" var="bean">
-			  <a href="./guest/${bean.sabun }" class="list-group-item">
-				  	<span class="badge">${bean.pay }</span>
-				    <h4>${bean.sabun }</h4>
-				    <p>${bean.name } (${bean.nalja })</p>
-			  </a>
-			  </c:forEach>
-			</div>
-			</div>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-12">
+<form action="/ex03/guest/${bean.sabun }" class="form-horizontal" method="post">
+	<input type="hidden" name="_method" value="put">
+	<input type="hidden" name="sabun" value="${bean.sabun }">
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">name</label>
+    <div class="col-sm-10">
+    	<div class="input-group">
+  		<span class="input-group-addon" id="basic-addon1">@</span>
+    	<input type="email" value="${bean.name }" name="name" class="form-control" id="name" placeholder="name">
+    	</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="pay" class="col-sm-2 control-label">pay</label>
+    <div class="col-sm-10">
+      <input type="text" value="${bean.pay }" name="pay" class="form-control" id="pay" placeholder="pay">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Sign in</button>
+    </div>
+  </div>
+</form>
 		  </div>
 		</div>
 		<div class="row footer">

@@ -15,4 +15,16 @@ public class GuestServiceImpl implements GuestService {
 		guestDao.insertOne(bean);
 	}
 
+	@Override
+	public GuestVo detail(int sabun) throws Exception {
+		
+		return guestDao.selectOne(sabun);
+	}
+
+	@Override
+	public int edit(GuestVo bean) throws Exception {
+		
+		return guestDao.updateOne(bean);
+	}
+
 }
