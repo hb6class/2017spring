@@ -58,9 +58,15 @@ public class GuestDaoImpl extends JdbcDaoSupport implements GuestDao {
 
 	@Override
 	public int updateOne(GuestVo bean) throws Exception {
-		String sql="update guest03 set name=?, pay=? where sabun=?";
+		String sql="UPDATE GUEST03 SET NAME=?, PAY=? WHERE SABUN=?";
 		return getJdbcTemplate().update(sql
 				, bean.getName(),bean.getPay(),bean.getSabun());
+	}
+
+	@Override
+	public int deleteOne(int sabun) throws Exception {
+		String sql="DELETE FROM GUEST03 WHERE SABUN=?";
+		return getJdbcTemplate().update(sql, sabun);
 	}
 
 }

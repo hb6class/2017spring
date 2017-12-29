@@ -31,6 +31,11 @@ public class AddController{
 		model.addAttribute("bean", guestService.detail(sabun));
 		return "guest/edit";
 	}
+	@RequestMapping(value="/guest/{sabun}/delete", method=RequestMethod.GET)
+	public String delete(@PathVariable int sabun, Model model) throws Exception {
+		model.addAttribute("sabun", sabun);
+		return "guest/delete";
+	}
 }
 
 

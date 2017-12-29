@@ -27,4 +27,10 @@ public class GuestServiceImpl implements GuestService {
 		return guestDao.updateOne(bean);
 	}
 
+	@Override
+	public int delete(int sabun) throws Exception {
+		
+		return guestDao.deleteOne(sabun);
+	}
+
 }

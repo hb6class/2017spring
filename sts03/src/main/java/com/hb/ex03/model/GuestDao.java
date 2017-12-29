@@ -10,4 +10,5 @@ public interface GuestDao {
 	void insertOne(GuestVo bean) throws Exception;
 	int nextVal() throws Exception;
 	int updateOne(GuestVo bean) throws Exception;
+	int deleteOne(int sabun) throws Exception;
 }

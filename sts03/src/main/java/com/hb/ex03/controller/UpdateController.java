@@ -26,4 +26,9 @@ public class UpdateController {
 		guestService.edit(bean);
 		return "redirect:/guest/"+sabun;
 	}
+	@RequestMapping(value="/guest/{1}",method=RequestMethod.DELETE)
+	public String delete(@PathVariable("1") int sabun) throws Exception {
+		guestService.delete(sabun);
+		return "redirect:/guest";
+	}
 }
