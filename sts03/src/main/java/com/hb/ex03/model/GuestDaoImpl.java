@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.jdbc.support.SQLExceptionTranslator;
 
 import com.hb.ex03.model.entity.GuestVo;
 
@@ -35,6 +36,18 @@ public class GuestDaoImpl extends JdbcDaoSupport implements GuestDao {
 	public List<GuestVo> selectAll() throws Exception {
 		String sql="SELECT * FROM GUEST03";
 		return getJdbcTemplate().query(sql, rowMapper);
+	}
+	
+	@Override
+	public int nextVal() throws Exception {
+		String sql="select max(sabun) as mx from guest03";
+		return getJdbcTemplate().queryForInt(sql);
+	}
+
+	@Override
+	public void insertOne(GuestVo bean) throws Exception {
+		String sql="insert into guest03 values (?,?,now(),?)";
+		getJdbcTemplate().update(sql,bean.getSabun(),bean.getName(),bean.getPay());
 	}
 
 }

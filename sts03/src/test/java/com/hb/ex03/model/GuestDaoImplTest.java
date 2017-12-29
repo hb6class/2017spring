@@ -27,5 +27,26 @@ public class GuestDaoImplTest {
 		assertTrue("List타입이 아님",list instanceof List);
 		assertTrue("list가 비었음",list.size()>0);		
 	}
+	
+	@Test
+	public void testNextVal() throws Exception {
+		assertTrue(guestDao.nextVal()>0);
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

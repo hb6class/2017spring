@@ -17,4 +17,7 @@
 	<bean id="guestDao" class="com.hb.ex03.model.GuestDaoImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
 	</bean>	
+	<bean id="guestService" class="com.hb.ex03.service.GuestServiceImpl">
+		<constructor-arg name="guestDao" ref="guestDao"></constructor-arg>
+	</bean>
 </beans>
