@@ -26,7 +26,7 @@ var msg;
 			/* $.getJSON($(this).attr('href'),function(data){
 				alert(data);
 			}); */
-			
+			     
 			$.ajax({
 				'url':$(this).attr('href')
 				,'method' :'GET'
@@ -36,7 +36,7 @@ var msg;
 				, 'dataType':'json'
 				,'success' : function(data) {
 					alert(data.root[0].sabun);
-				}
+			 	}
 			});
 			return false;
 		});
