@@ -29,4 +29,15 @@ public class GuestDaoImpl implements GuestDao {
 		return (GuestVo) sqlMapClient.queryForObject("selectOne",sabun);
 	}
 
+	@Override
+	public int updateOne(GuestVo bean) throws Exception {
+		System.out.println("updateDAO:"+bean);
+		return sqlMapClient.update("updateOne",bean);
+	}
+
+	@Override
+	public int deleteOne(int sabun) throws Exception {
+		return sqlMapClient.delete("deleteOne",sabun);
+	}
+
 }

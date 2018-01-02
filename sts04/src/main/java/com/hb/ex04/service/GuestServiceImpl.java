@@ -34,4 +34,15 @@ public class GuestServiceImpl implements GuestService {
 		return guestDao.selectOne(sabun);
 	}
 
+	@Override
+	public int updateOne(GuestVo bean) throws Exception {
+		return guestDao.updateOne(bean);
+	}
+
+	@Override
+	public int deleteOne(int sabun) throws Exception {
+		// TODO Auto-generated method stub
+		return guestDao.deleteOne(sabun);
+	}
+
 }

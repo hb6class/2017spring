@@ -22,13 +22,24 @@
 var msg;
 	$(function() {
 		
+		$('#detail button').eq(1).click(function() {
+			$.ajax({
+				'url':$('#detail .bean').eq(0).text()
+				,'method':'DELETE'
+				,'success':function(){
+					window.location.reload();
+				}
+			});
+		});
+		
 		$('#update form').submit(function() {
-			var param=$( this ).serialize();
+			var param=$( this ).serialize();//+'&_method=put';
 			//alert($('#detail .bean').eq(0).text());
 			alert(param);
 			$.ajax({
 				'url':$('#detail .bean').eq(0).text()
-				,'method':'PUT'
+				,'method':'POST'
+//				,'method':'PUT'
 				,'data':param
 				,'success':function(){
 					window.location.reload();
@@ -109,6 +120,7 @@ var msg;
 	<div class="popup" id="update">
 	<h1>수정 페이지</h1>
 	<form>
+		<input type="hidden" name="_method" value="put" />
 	<p>
 		<label for="sabun">사번</label>
 		<span class="bean"></span>

@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hb.ex04.model.entity.GuestVo;
 import com.hb.ex04.service.GuestService;
 
 @Controller
-public class GuestUpdateController {
+public class GuestUpdateController{
 	@Autowired
 	GuestService guestService;
 
@@ -28,17 +29,16 @@ public class GuestUpdateController {
 		return "redirect:/guest/bbs";
 	}
 	
-//	public String update(@ModelAttribute GuestVo bean, Model model) {
 	@RequestMapping(value="/guest/{idx}", method=RequestMethod.PUT)
-	public String update(@PathVariable("idx") int sabun,@RequestParam String name) {
-		
-//		Enumeration names = req.getAttributeNames();
-//		while(names.hasMoreElements()) {
-//			System.out.println(names.nextElement());
-//		}
-		System.out.println("edit:"+sabun);
-		System.out.println("edit:"+name);
-//		model.addAttribute("bean", bean);
+	public String update(@ModelAttribute GuestVo bean, Model model) throws Exception {
+		System.out.println(guestService.updateOne(bean));
+		model.addAttribute("bean", bean);
+		return "json/json";
+	}
+	@RequestMapping(value="/guest/{idx}", method=RequestMethod.DELETE)
+	public String delete(@PathVariable("idx") int sabun) throws Exception {
+		System.out.println(sabun);
+		guestService.deleteOne(sabun);
 		return "json/json";
 	}
 }
