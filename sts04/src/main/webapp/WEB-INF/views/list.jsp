@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	#popup{
+	.popup{
 		background-color: pink;
 		width: 500px;
 		height: 400px;
@@ -21,6 +21,45 @@
 <script type="text/javascript">
 var msg;
 	$(function() {
+		
+		$('#update form').submit(function() {
+			var param=$( this ).serialize();
+			//alert($('#detail .bean').eq(0).text());
+			alert(param);
+			$.ajax({
+				'url':$('#detail .bean').eq(0).text()
+				,'method':'PUT'
+				,'data':param
+				,'success':function(){
+					window.location.reload();
+				}
+			});
+			return false;
+		});
+		
+		$('#detail button').eq(0).click(function() {
+			$('#detail').hide();
+			$.ajax({
+				'url':$('#detail .bean').eq(0).text()
+				,'method' :'GET'
+				,'error':function(xhr,textStatus,errorThrown){
+					alert(textStatus);
+				}
+				, 'dataType':'json'
+				,'success' : function(data) {
+					//alert(data.root[0].sabun);
+					$('#update').show();
+					$('#update .bean').eq(0).text(data.root[0].sabun);
+					$('#update .bean').eq(1).val(data.root[0].sabun);
+					$('#update .bean').eq(2).val(data.root[0].name);
+					$('#update .bean').eq(3).text(data.root[0].nalja);
+					$('#update .bean').eq(4).val(data.root[0].pay);
+			 	}
+			});// ajax end;
+			
+		});
+		
+		
 		$('table a').click(function() {
 			//window.alert($(this).attr('href'));
 			/* $.getJSON($(this).attr('href'),function(data){
@@ -35,16 +74,21 @@ var msg;
 				}
 				, 'dataType':'json'
 				,'success' : function(data) {
-					alert(data.root[0].sabun);
+					//alert(data.root[0].sabun);
+					$('#detail').show();
+					$('#detail .bean').eq(0).text(data.root[0].sabun);
+					$('#detail .bean').eq(1).text(data.root[0].name);
+					$('#detail .bean').eq(2).text(data.root[0].nalja);
+					$('#detail .bean').eq(3).text(data.root[0].pay);
 			 	}
 			});
 			return false;
 		});
-		$('#popup').hide();
+		$('.popup').hide();
 		$('#add').click(function() {
-			$('#popup').show();
+			$('#add').show();
 		});
-		$('#popup>form').submit(function() {
+		$('#add>form').submit(function() {
 
 			var param=$( this ).serialize();
 			$.ajax({
@@ -62,7 +106,55 @@ var msg;
 </script>
 </head>
 <body>
-	<div id="popup">
+	<div class="popup" id="update">
+	<h1>수정 페이지</h1>
+	<form>
+	<p>
+		<label for="sabun">사번</label>
+		<span class="bean"></span>
+		<input type="hidden" name="sabun" id="sabun" class="bean"/>
+	</p>
+	<p>
+		<label for="name">이름</label>
+		<input type="text" name="name" id="name" class="bean"/>
+	</p>
+	<p>
+		<span>날짜</span>
+		<span class="bean"></span>
+	</p>
+	<p>
+		<label for="pay">금액</label>
+		<input type="text" name="pay" id="pay" class="bean"/>
+	</p>
+	<p>
+		<button type="submit">수정</button>
+	</p>
+	</form>
+	</div>
+	<div class="popup" id="detail">
+	<h1>상세 페이지</h1>
+	<p>
+		<span>사번</span>
+		<span class="bean"></span>
+	</p>
+	<p>
+		<span>이름</span>
+		<span class="bean"></span>
+	</p>
+	<p>
+		<span>날짜</span>
+		<span class="bean"></span>
+	</p>
+	<p>
+		<span>금액</span>
+		<span class="bean"></span>
+	</p>
+	<p>
+		<button>수정</button>
+		<button>삭제</button>
+	</p>
+	</div>
+	<div class="popup" id="add">
 		<h1>입력 페이지</h1>
 		<form>
 		<div>

@@ -1,10 +1,18 @@
 package com.hb.ex04.controller;
 
+import java.util.Enumeration;
+import java.util.function.IntBinaryOperator;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hb.ex04.model.entity.GuestVo;
 import com.hb.ex04.service.GuestService;
@@ -19,4 +27,29 @@ public class GuestUpdateController {
 		guestService.insertOne(bean);
 		return "redirect:/guest/bbs";
 	}
+	
+//	public String update(@ModelAttribute GuestVo bean, Model model) {
+	@RequestMapping(value="/guest/{idx}", method=RequestMethod.PUT)
+	public String update(@PathVariable("idx") int sabun,@RequestParam String name) {
+		
+//		Enumeration names = req.getAttributeNames();
+//		while(names.hasMoreElements()) {
+//			System.out.println(names.nextElement());
+//		}
+		System.out.println("edit:"+sabun);
+		System.out.println("edit:"+name);
+//		model.addAttribute("bean", bean);
+		return "json/json";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
