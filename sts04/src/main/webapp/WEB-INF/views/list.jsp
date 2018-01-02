@@ -19,7 +19,27 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
+var msg;
 	$(function() {
+		$('table a').click(function() {
+			//window.alert($(this).attr('href'));
+			/* $.getJSON($(this).attr('href'),function(data){
+				alert(data);
+			}); */
+			
+			$.ajax({
+				'url':$(this).attr('href')
+				,'method' :'GET'
+				,'error':function(xhr,textStatus,errorThrown){
+					alert(textStatus);
+				}
+				, 'dataType':'json'
+				,'success' : function(data) {
+					alert(data.root[0].sabun);
+				}
+			});
+			return false;
+		});
 		$('#popup').hide();
 		$('#add').click(function() {
 			$('#popup').show();
@@ -70,10 +90,10 @@
 	</tr>
 	<c:forEach items="${list }" var="bean">
 		<tr>
-			<td><a href="#">${bean.sabun }</a></td>
-			<td><a href="#">${bean.name }</a></td>
-			<td><a href="#">${bean.nalja }</a></td>
-			<td><a href="#">${bean.pay }</a></td>
+			<td><a href="${bean.sabun }">${bean.sabun }</a></td>
+			<td><a href="${bean.sabun }">${bean.name }</a></td>
+			<td><a href="${bean.sabun }">${bean.nalja }</a></td>
+			<td><a href="${bean.sabun }">${bean.pay }</a></td>
 		</tr>
 	</c:forEach>
 	</table>

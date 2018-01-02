@@ -29,6 +29,11 @@ public class GuestDaoImplTest {
 				, guestDao.selectAll() instanceof List);
 	}
 
+	@Test
+	public void testSelectOne() throws Exception{
+		assertNotNull(guestDao.selectOne(1111));
+		assertEquals(new GuestVo(1111, "test01", null, 1000), guestDao.selectOne(1111));
+	}
 }
 
 

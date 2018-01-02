@@ -3,6 +3,7 @@ package com.hb.ex04.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,4 +20,24 @@ public class GuestSelectController {
 		model.addAttribute("list", guestService.selectAll());		
 		return "list";
 	}
+	
+	@RequestMapping(value="/guest/{idx}")
+	public String detail(Model model,@PathVariable("idx") int sabun) throws Exception{
+		// json
+		System.out.println("/guest/"+sabun);
+		model.addAttribute("bean"
+				, guestService.selectOne(sabun));
+		System.out.println(guestService.selectOne(sabun));
+		return "json/json";
+	}
 }
+
+
+
+
+
+
+
+
+
+

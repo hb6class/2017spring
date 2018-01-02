@@ -28,4 +28,10 @@ public class GuestServiceImpl implements GuestService {
 		guestDao.insertOne(bean);
 	}
 
+	@Override
+	public GuestVo selectOne(int sabun) throws Exception {
+		
+		return guestDao.selectOne(sabun);
+	}
+
 }
