@@ -24,7 +24,21 @@
 		$('#add').click(function() {
 			$('#popup').show();
 		});
+		$('#popup>form').submit(function() {
+
+			var param=$( this ).serialize();
+			$.ajax({
+					'method' :'POST',
+					'data' :param,
+					'success' : function() {
+						window.location.reload();
+					}
+			});
+			return false;
+			
+		});
 	});
+
 </script>
 </head>
 <body>

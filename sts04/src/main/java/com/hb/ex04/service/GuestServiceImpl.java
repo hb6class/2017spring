@@ -23,4 +23,9 @@ public class GuestServiceImpl implements GuestService {
 		return guestDao.selectAll();
 	}
 
+	@Override
+	public void insertOne(GuestVo bean) throws Exception {
+		guestDao.insertOne(bean);
+	}
+
 }

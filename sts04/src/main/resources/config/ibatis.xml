@@ -5,4 +5,7 @@
 	<select id="selectAll" resultClass="com.hb.ex04.model.entity.GuestVo">
 	SELECT * FROM GUEST03
 	</select>
+	<insert id="insertOne" parameterClass="com.hb.ex04.model.entity.GuestVo">
+	Insert into guest03 values (#sabun#,#name#,now(),#pay#)
+	</insert>
     </sqlMap>
