@@ -9,4 +9,6 @@ public interface GuestService {
 	void addOne(GuestVo bean);
 	void detailOne(int sabun,Model model);
 	void editOne(int sabun,Model model);
+	void updateOne(GuestVo bean);
+	void deleteOne(int sabun);
 }

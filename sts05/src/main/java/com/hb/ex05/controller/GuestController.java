@@ -41,6 +41,17 @@ public class GuestController {
 		guestService.editOne(sabun,model);
 		return "detail";
 	}
+	@RequestMapping(value="/delete/{idx}",method=RequestMethod.GET)
+	public String delete(@PathVariable("idx") int sabun) {
+		guestService.deleteOne(sabun);
+		return "redirect:/guest/";
+	}
+	@RequestMapping(value="/edit/{idx}",method=RequestMethod.POST)
+	public String update(@PathVariable("idx") int sabun,@ModelAttribute GuestVo bean,Model model) {
+		bean.setSabun(sabun);
+		guestService.updateOne(bean);
+		return "redirect:/guest/detail/"+sabun;
+	}
 }
 
 

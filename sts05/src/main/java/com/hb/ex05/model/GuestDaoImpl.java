@@ -28,4 +28,15 @@ public class GuestDaoImpl implements GuestDao {
 		return session.selectOne("selectOne",sabun);
 	}
 
+	@Override
+	public int updateOne(GuestVo bean) {
+		return session.update("updateOne", bean);
+	}
+
+	@Override
+	public int deleteOne(int sabun) {
+		
+		return session.delete("deleteOne", sabun);
+	}
+
 }

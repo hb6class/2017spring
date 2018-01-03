@@ -37,4 +37,14 @@ public class GuestServiceImpl implements GuestService {
 		
 	}
 
+	@Override
+	public void updateOne(GuestVo bean) {
+		guestDao.updateOne(bean);
+	}
+
+	@Override
+	public void deleteOne(int sabun) {
+		guestDao.deleteOne(sabun);
+	}
+
 }

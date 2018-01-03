@@ -5,13 +5,27 @@
   
   <mapper namespace="com.hb.ex05.model.GuestDao">
   	
-  	<select id="selectAll" resultType="com.hb.ex05.model.entity.GuestVo">
+  	<select id="selectAll" resultType="bean">
   	SELECT * FROM GUEST03
   	</select>
-  	<insert id="insertOne" parameterType="com.hb.ex05.model.entity.GuestVo">
+  	<insert id="insertOne" parameterType="bean">
   	INSERT INTO GUEST03 VALUES (#{sabun},#{name},NOW(),#{pay})
   	</insert>
-  	<select id="selectOne" parameterType="int" resultType="com.hb.ex05.model.entity.GuestVo">
+  	<select id="selectOne" parameterType="int" resultType="bean">
   	SELECT * FROM GUEST03 WHERE SABUN=#{value}
   	</select>
+  	<update id="updateOne" parameterType="bean">
+  	UPDATE GUEST03 SET NAME=#{name}, PAY=#{pay} WHERE SABUN=#{sabun}
+  	</update>
+  	<delete id="deleteOne" parameterType="int">
+  	DELETE FROM GUEST03 WHERE SABUN=${value}
+  	</delete>
   </mapper>
+  
+  
+  
+  
+  
+  
+  
+  
