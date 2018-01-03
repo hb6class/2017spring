@@ -8,5 +8,10 @@
   	<select id="selectAll" resultType="com.hb.ex05.model.entity.GuestVo">
   	SELECT * FROM GUEST03
   	</select>
-  
+  	<insert id="insertOne" parameterType="com.hb.ex05.model.entity.GuestVo">
+  	INSERT INTO GUEST03 VALUES (#{sabun},#{name},NOW(),#{pay})
+  	</insert>
+  	<select id="selectOne" parameterType="int" resultType="com.hb.ex05.model.entity.GuestVo">
+  	SELECT * FROM GUEST03 WHERE SABUN=#{value}
+  	</select>
   </mapper>

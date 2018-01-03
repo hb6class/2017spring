@@ -18,4 +18,14 @@ public class GuestDaoImpl implements GuestDao {
 		return session.selectList("com.hb.ex05.model.GuestDao.selectAll");
 	}
 
+	@Override
+	public void insertOne(GuestVo bean) {
+		session.insert("com.hb.ex05.model.GuestDao.insertOne", bean);
+	}
+
+	@Override
+	public GuestVo selectOne(int sabun) {
+		return session.selectOne("selectOne",sabun);
+	}
+
 }

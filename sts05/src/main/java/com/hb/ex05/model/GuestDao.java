@@ -6,4 +6,6 @@ import com.hb.ex05.model.entity.GuestVo;
 
 public interface GuestDao {
 	List<GuestVo> selectAll();
+	GuestVo selectOne(int sabun);
+	void insertOne(GuestVo bean);
 }
