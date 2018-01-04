@@ -24,6 +24,7 @@ public class GuestServiceImpl implements GuestService {
 
 	@Override
 	public void detailOne(int sabun,Model model) {
+		guestDao.payPlus(sabun);
 		model.addAttribute("bean", guestDao.selectOne(sabun));
 		model.addAttribute("title", "»ó¼¼");
 		model.addAttribute("readonly", "readonly");
