@@ -7,8 +7,8 @@ import com.hb.ex05.model.entity.GuestVo;
 public interface GuestService {
 	void listAll(Model model);	
 	void addOne(GuestVo bean);
-	void detailOne(int sabun,Model model);
-	void editOne(int sabun,Model model);
+	void detailOne(int sabun,Model model) throws Exception;
+	void editOne(int sabun,Model model) throws Exception;
 	void updateOne(GuestVo bean);
 	void deleteOne(int sabun);
 }

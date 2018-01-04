@@ -32,12 +32,12 @@ public class GuestController {
 		return "redirect:/guest/";
 	}
 	@RequestMapping(value="/detail/{idx}",method=RequestMethod.GET)
-	public String detail(@PathVariable("idx") int sabun,Model model) {
+	public String detail(@PathVariable("idx") int sabun,Model model) throws Exception {
 		guestService.detailOne(sabun,model);
 		return "detail";
 	}
 	@RequestMapping(value="/edit/{idx}",method=RequestMethod.GET)
-	public String edit(@PathVariable("idx") int sabun,Model model) {
+	public String edit(@PathVariable("idx") int sabun,Model model) throws Exception {
 		guestService.editOne(sabun,model);
 		return "detail";
 	}

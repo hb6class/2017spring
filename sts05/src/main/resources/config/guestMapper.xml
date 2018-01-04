@@ -12,7 +12,7 @@
   	INSERT INTO GUEST03 VALUES (#{sabun},#{name},NOW(),#{pay})
   	</insert>
   	<select id="selectOne" parameterType="int" resultType="bean">
-  	SELECT * FROM GUEST03 WHERE SABUN=#{value}
+  	SELECT * FROM GUEST WHERE SABUN=#{value}
   	</select>
   	<update id="updateOne" parameterType="bean">
   	UPDATE GUEST03 SET NAME=#{name}, PAY=#{pay} WHERE SABUN=#{sabun}

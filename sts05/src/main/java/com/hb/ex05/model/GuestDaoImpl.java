@@ -24,7 +24,7 @@ public class GuestDaoImpl implements GuestDao {
 	}
 
 	@Override
-	public GuestVo selectOne(int sabun) {
+	public GuestVo selectOne(int sabun) throws Exception{
 		return session.selectOne("com.hb.ex05.model.GuestDao.selectOne",sabun);
 	}
 
